@@ -1,30 +1,50 @@
 let numeroSecreto = gerarNumeroAleatorio();
-
+var tentativas =1;
 
 function exibirTextoNaTela(tag, texto){
     let campo = document.querySelector(tag);
     campo.innerHTML = texto;
 
 }
-exibirTextoNaTela('h1' , 'Secret number game');
-exibirTextoNaTela('p', 'select a number between 1 and 10');
-
+function exibirMensagemInicial(){
+    exibirTextoNaTela('h1' , 'Secret number game');
+    exibirTextoNaTela('p', 'select a number between 1 and 10');
+};
+exibirMensagemInicial();
 
 function verificarChute() {
     let chute = document.querySelector('input').value;
     if(chute == numeroSecreto){
         exibirTextoNaTela('h1', 'Good hit!');
-        exibirTextoNaTela('p', 'you discorver the secret number');
+        let palavraTentativa = tentativas > 1 ? 'tries' : 'try';
+        let mensagemTentativas = `you discorver the secret number with ${tentativas} ${palavraTentativa}`;
+        exibirTextoNaTela('p', mensagemTentativas);
+        document.getElementById('reiniciar').removeAttribute('disabled');
     }else{
         if(chute > numeroSecreto){
             exibirTextoNaTela('p', 'number is small');
         }else{
             exibirTextoNaTela('p', 'number is bigger');
         }
+        tentativas++;
+        limparCampo();
     }
 
 }
 
 function gerarNumeroAleatorio(){
    return parseInt(Math.random()* 10 + 1 );
+};
+
+function limparCampo(){
+    chute = document.querySelector('input');
+    chute.value = '';
+};
+
+function reiniciarJogo(){
+    numeroSecreto = gerarNumeroAleatorio();
+    limparCampo();
+    tentativas = 1;
+    exibirMensagemInicial();
+    document.getElementById('reiniciar').setAttribute('disabled',true);
 };
