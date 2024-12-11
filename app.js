@@ -1,31 +1,33 @@
-let title = document.querySelector('h1');
-let city;
-var number1
-var number2
-title.innerHTML = 'Hora do Desafio';
+let nome = prompt("qual seu nome?");
+alert("olá " + nome);
 
-function clickConsole(){
-    console.log('O botão foi clicado');
-};
 
-function clickAlert(){
-    alert('Eu amo JS');
-};
+let dobro = prompt(nome +' por favor agora diga um numero' );
+dobro = parseInt(dobro);
+var add = dobro * 2;
+alert('o dobro de ' +dobro+ ' é ' +add)
 
-function clickPromt(){
-    let city =prompt('digite o nome de uma cidade');
-    alert('Estive em '+city+ ' e lembrei de você');
+let notas = [];
+for (let i = 1; i <= 3; i++) {
+    notas.push(parseInt(prompt(`Digite a nota ${i}:`)));
+}
+let soma = notas.reduce((a, b) => a + b, 0);
+alert(`A soma das notas foi ${soma}`);
+alert(`A média foi ${soma / notas.length}`);
 
-};
+let number1 =prompt('digite um valor inteiro');
+let number2 =prompt('digite outro valor inteiro');
+number1 = parseInt(number1);
+number2 = parseInt(number2);
+alert(number1 > number2 ? 'Número 1 é maior que o 2' : number2 > number1 ? 'Número 2 é maior que o 1' : 'Os números são iguais');
 
-function clickSoma(){
-    let number1 =prompt('digite um valor inteiro');
-    let number2 =prompt('digite outro valor inteiro');
-    number1 = parseInt(number1);
-    number2 = parseInt(number2);
-    alert('os numero escolhidos foram '+number1+ ' e ' +number2);
-    var add = number1 + number2;
-    alert ('o resultado foi ' +add);
+let multi = (parseInt(prompt("digite um valor para multiplacar por ele mesmo")));
+let resultado = multi * multi ;
+alert ('o resultado da multiplicação de ' + multi + ' por ele mesmo é igual a ' +resultado);
 
-};
 
+
+
+
+
+console.log("Olá, mundo!")
