@@ -1,31 +1,30 @@
-let title = document.querySelector('h1');
-let city;
-var number1
-var number2
-title.innerHTML = 'Hora do Desafio';
+let numeroSecreto = gerarNumeroAleatorio();
 
-function clickConsole(){
-    console.log('O botão foi clicado');
+
+function exibirTextoNaTela(tag, texto){
+    let campo = document.querySelector(tag);
+    campo.innerHTML = texto;
+
+}
+exibirTextoNaTela('h1' , 'Secret number game');
+exibirTextoNaTela('p', 'select a number between 1 and 10');
+
+
+function verificarChute() {
+    let chute = document.querySelector('input').value;
+    if(chute == numeroSecreto){
+        exibirTextoNaTela('h1', 'Good hit!');
+        exibirTextoNaTela('p', 'you discorver the secret number');
+    }else{
+        if(chute > numeroSecreto){
+            exibirTextoNaTela('p', 'number is small');
+        }else{
+            exibirTextoNaTela('p', 'number is bigger');
+        }
+    }
+
+}
+
+function gerarNumeroAleatorio(){
+   return parseInt(Math.random()* 10 + 1 );
 };
-
-function clickAlert(){
-    alert('Eu amo JS');
-};
-
-function clickPromt(){
-    let city =prompt('digite o nome de uma cidade');
-    alert('Estive em '+city+ ' e lembrei de você');
-
-};
-
-function clickSoma(){
-    let number1 =prompt('digite um valor inteiro');
-    let number2 =prompt('digite outro valor inteiro');
-    number1 = parseInt(number1);
-    number2 = parseInt(number2);
-    alert('os numero escolhidos foram '+number1+ ' e ' +number2);
-    var add = number1 + number2;
-    alert ('o resultado foi ' +add);
-
-};
-
